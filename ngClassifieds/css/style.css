@@ -1,0 +1,38 @@
+button .material-icons{
+	margin-top: 8px;
+}  
+
+.footer{
+	top:10%;
+}
+.resize {
+    width: auto;
+    height: 200px;
+    min-height: 0px;
+}
+
+.ImageHolder{
+	overflow: hidden;
+}
+
+.classified.ng-enter,
+.classified.ng-move{
+	transition:0.4s all;
+	opacity:0;
+}
+
+.classified.ng-enter.ng-enter-active,
+.classified.ng-enter.ng-move-active{
+	opacity:1;
+}
+
+.classified.ng-leave{
+	animation:  0.5s fade_classified; 
+}
+
+@keyframes fade_classified{
+	from {opacity:1;}
+	to {opacity:0;}
+}
+
+textarea { resize: both; }

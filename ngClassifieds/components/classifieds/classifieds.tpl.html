@@ -1,0 +1,67 @@
+<md-toolbar>
+		<div layout="row">
+			<div class="md-toolbar-tools">
+				<p><strong>Post It!</strong></p>
+				<md-button ng-click="vm.openSideBar()">
+					<md-icon class="mdi mdi-plus-circle"></md-icon>
+					Post New Advertisement
+				</md-button>
+				<md-button ng-click="showFilters=true">
+					<md-icon class="mdi mdi-magnify"></md-icon>
+					Search
+				</md-button>
+			</div>
+			<!-- <div style="position: absolute; right: 10px; top: 18px;">
+				Welcome   <md-icon class="mdi mdi-account"></md-icon>
+			</div> -->
+		</div>
+		
+	</md-toolbar>
+
+	<ui-view></ui-view>
+
+	<div class="filters" layout="row" ng-show="showFilters">
+		<md-input-container>
+			<label>Enter Search Term</label>
+			<input type="text" ng-model="filterCriteria">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Category</label>
+			<md-select ng-model="category">
+				<md-option ng-repeat="category in vm.categories" value="{{category}}">
+					{{category}}
+				</md-option>
+			</md-select>
+		</md-input-container>
+
+		<div layout="row">
+			<md-button class="md-warn" 
+					   ng-click="filterCriteria=''; category=''; showFilters=false;">
+					   Clear
+		    </md-button>
+		</div>
+
+	</div>
+	<ui-view></ui-view>
+ 
+	<md-content>
+		<classified-card 
+			classifieds="vm.classifieds" 
+			filter-criteria="filterCriteria"
+			category="category"
+			class="md-padding" 
+			layout="row" 
+			layout-wrap></classified-card>
+	</md-content>
+	<md-toolbar>
+		<footer align="center">Copyright © 2016</footer>
+		<div align="center">
+			<md-icon class="mdi mdi-linkedin-box"></a></md-icon>
+			<md-icon class="mdi mdi-facebook-box"></md-icon>
+			<md-icon class="mdi mdi-github-box"></md-icon>
+			<md-icon class="mdi mdi-facebook-messenger"></md-icon>
+			<md-icon class="mdi mdi-google-plus-box"></md-icon>
+			<md-icon class="mdi mdi-twitter"></md-icon>
+		</div>	
+	</md-toolbar>

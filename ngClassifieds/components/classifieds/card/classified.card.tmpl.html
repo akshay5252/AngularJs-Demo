@@ -1,0 +1,55 @@
+		<md-card class="classified" ng-repeat="classified in classifieds | filter:filterCriteria | filter:category" flex="30">
+			<md-card-content>
+				<div class="ImageHolder">
+					<img ng-src="{{ classified.image }}" class="resize">
+				</div>
+				<div class="classified-info" ng-show="!showContact">
+					<h2 class="md-title">{{classified.title}}</h2>
+					<h3>{{classified.price | currency}}</h3>
+					<p>{{classified.description}}</p>
+				</div>
+
+				<div class="classified-contact" ng-show="showContact">
+					<p><md-icon class="mdi mdi-account"></md-icon>{{classified.contact.name}}</p>
+					<p><md-icon class="mdi mdi-phone"></md-icon>{{classified.contact.phone | phoneFilter}}</p>
+					<p><md-icon class="mdi mdi-email"></md-icon>{{classified.contact.email}}</p>
+				</div>
+
+				<div layout="row">
+					<md-button
+						ng-click="showContact=true"
+						ng-show="!showContact">
+						<md-icon class="mdi mdi-phone"></md-icon>Contact 
+					</md-button>
+
+					<md-button
+						ng-click="showContact=false"
+						ng-show="showContact">
+						<md-icon class="mdi mdi-star-circle"></md-icon>Details
+					</md-button>
+
+					<md-button
+						ng-click="showAdmin=true"
+						ng-show="!showAdmin">
+						<md-icon class="mdi mdi-apple-safari"></md-icon>Modify
+					</md-button>
+
+					<md-button
+						ng-click="showAdmin=false"
+						ng-show="showAdmin">
+						<md-icon class="mdi mdi-close-circle-outline"></md-icon>Close
+					</md-button>
+				</div>
+				<div class="classified-admin" ng-if="showAdmin">
+						<h3><md-icon class="mdi mdi-apple-safari"></md-icon>Modify Panel</h3>
+						<div layout="row">
+							<md-button ng-click="vm.editClassified(classified)" class="md-primary">
+							<md-icon class="mdi mdi-content-cut"></md-icon>
+							Edit</md-button>
+							<md-button ng-click="vm.deleteClassified($event,classified)" class="md-primary">
+							<md-icon class="mdi mdi-delete"></md-icon>
+							Delete</md-button>
+						</div>
+				</div>
+			</md-card-content>
+		</md-card>

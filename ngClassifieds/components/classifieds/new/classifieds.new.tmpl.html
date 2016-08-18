@@ -1,0 +1,57 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" 
+			md-component-id="left"
+			md-is-open="sidenavOpen">
+		<md-toolbar>
+			
+			<h1 class="md-toolbar-tools">Add Classified</h1>
+		</md-toolbar>
+		<md-content layout-padding>
+			<form>
+				<md-input-container>
+					<label for="title">Title</label>
+					<input type="text" ng-model="vm.classified.title" id="title" md-autofocus>
+				</md-input-container>
+				<md-input-container>
+					<label for="price">Price ($)</label>
+					<input type="number" ng-model="vm.classified.price" id="price" md-autofocus>
+				</md-input-container>
+				<md-input-container>
+					<label for="description">Description</label>
+					<textarea type="text" ng-model="vm.classified.description" id="description" md-autofocus></textarea>
+				</md-input-container>
+				<md-input-container>
+					<label for="category">Category</label>
+					<md-select ng-model="vm.classified.categories">
+					<md-option ng-repeat="category in vm.categories" value="{{category}}">
+						{{category}}
+					</md-option>
+					</md-select>
+				</md-input-container>
+				<md-input-container>
+					<label for="image">Image Link</label>
+					<input type="text" ng-model="vm.classified.image" id="image" md-autofocus>
+				</md-input-container>
+				<md-input-container>
+					<label for="contact">Email</label>
+					<input type="email" ng-model="vm.classified.contact.email" id="email" md-autofocus>
+				</md-input-container>	
+				<md-input-container>
+					<label for="contact">Phone Number</label>
+					<input type="number" ng-model="vm.classified.contact.phone" id="phone" md-autofocus>
+				</md-input-container>
+				<md-input-container>		
+					<label for="contact">Contact Name</label>
+					<input type="text" ng-model="vm.classified.contact.name" id="name" md-autofocus>
+				</md-input-container>
+				<md-button ng-if="!vm.editing" ng-click="vm.saveClassified(vm.classified)" class="md-primary">
+					Save
+				</md-button>
+				<md-button ng-if="vm.editing" ng-click="vm.saveEdit()" class="md-primary">
+        			Save Edit
+      			</md-button>
+				<md-button class="md-warn" ng-click="vm.closeSideBar()">
+					Cancel
+				</md-button>
+			</form>
+		</md-content>
+	</md-sidenav>
